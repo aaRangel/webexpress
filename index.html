@@ -818,8 +818,8 @@
     <!-- Header -->
     <header class="header">
         <div class="header-content">
-            <div class="logo">ARMANDO RANGEL - WEB EXPRESS <span class="logo-emoji">⚡</span></div>
-            <button class="btn btn-primary" onclick="scrollToPricing()">Quiero mi sitio ya</button>
+            <div class="logo">WEB EXPRESS <small> by Armando Rangel</small> <span class="logo-emoji">⚡</span></div>
+            <button class="btn btn-primary" onclick="openPurchaseModal()">Quiero mi sitio ya</button>
         </div>
     </header>
 
@@ -994,14 +994,6 @@
     </div>
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Scroll to pricing section
-        function scrollToPricing() {
-            document.getElementById('pricing_section').scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'center'
-            });
-        }
-
         // Open purchase modal
         function openPurchaseModal() {
             document.getElementById('purchaseModal').classList.add('active');
