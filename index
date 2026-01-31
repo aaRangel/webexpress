@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Express ⚡ - Por Armando Rangel</title>
+    <meta name="description" content="Creamos tu sitio web profesional en solo 72 horas. Landing page de alto impacto optimizada para vender. Pago único de $99.990 CLP. Sin contratos ocultos.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-primary: #F9F9F9;
+            --bg-white: #FFFFFF;
+            --text-primary: #202020;
+            --text-secondary: #505050;
+            --cta-primary: #ec4206;
+            --cta-hover: #cf3a05;
+            --divider: #EAEAEA;
+            --accent-light: #fff5f2;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.12);
+            --shadow-lg: 0 8px 40px rgba(0,0,0,0.15);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Header */
+        .header {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--divider);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            animation: slideDown 0.5s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+        }
+        
+        .logo-emoji {
+            display: inline-block;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        /* Buttons */
+        .btn {
+            font-family: 'Outfit', sans-serif;
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background: var(--cta-primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(236, 66, 6, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background: var(--cta-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(236, 66, 6, 0.4);
+        }
+        
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+        
+        .btn-large {
+            padding: 1.125rem 2.5rem;
+            font-size: 1.125rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+            padding: 5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 80% 20%, rgba(236, 66, 6, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 60% 80%, rgba(236, 66, 6, 0.03) 0%, transparent 50%);
+            z-index: 0;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            letter-spacing: -1.5px;
+        }
+        
+        .hero h1 .highlight {
+            color: var(--cta-primary);
+        }
+        
+        .hero p {
+            font-size: clamp(1.125rem, 2vw, 1.375rem);
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            line-height: 1.7;
+        }
+        
+        .trust-badges {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+        
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+        
+        .badge::before {
+            content: '✓';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: var(--cta-primary);
+            color: white;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 0.75rem;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Section */
+        .section {
+            padding: 5rem 2rem;
+        }
+        
+        .section-white {
+            background: var(--bg-white);
+        }
+        
+        .section-heading {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(1.875rem, 4vw, 2.75rem);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-primary);
+            letter-spacing: -1px;
+        }
+        
+        /* Pain Points */
+        .pain-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .pain-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease-out backwards;
+        }
+        
+        .pain-card:nth-child(1) { animation-delay: 0.1s; }
+        .pain-card:nth-child(2) { animation-delay: 0.2s; }
+        .pain-card:nth-child(3) { animation-delay: 0.3s; }
+        
+        .pain-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .pain-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .pain-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.375rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+        
+        .pain-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .resolution-text {
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--cta-primary);
+            padding: 1.5rem;
+            background: var(--accent-light);
+            border-radius: 12px;
+            border-left: 4px solid var(--cta-primary);
+        }
+        
+        /* Benefits */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .benefits-image {
+            position: relative;
+            height: 500px;
+            background: linear-gradient(135deg, #f0f0f0 0%, #e5e5e5 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #999;
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+        }
+        
+        .benefits-image::before {
+            content: '💻📱';
+            font-size: 4rem;
+            position: absolute;
+        }
+        
+        .features-list {
+            list-style: none;
+        }
+        
+        .features-list li {
+            padding: 1rem 0;
+            padding-left: 2.5rem;
+            position: relative;
+            font-size: 1.125rem;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--divider);
+            animation: fadeInUp 0.5s ease-out backwards;
+        }
+        
+        .features-list li:nth-child(1) { animation-delay: 0.1s; }
+        .features-list li:nth-child(2) { animation-delay: 0.2s; }
+        .features-list li:nth-child(3) { animation-delay: 0.3s; }
+        .features-list li:nth-child(4) { animation-delay: 0.4s; }
+        .features-list li:nth-child(5) { animation-delay: 0.5s; }
+        .features-list li:nth-child(6) { animation-delay: 0.6s; }
+        
+        .features-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            width: 28px;
+            height: 28px;
+            background: var(--cta-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.875rem;
+        }
+        
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .testimonial {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            animation: fadeInUp 0.6s ease-out backwards;
+        }
+        
+        .testimonial:nth-child(1) { animation-delay: 0.1s; }
+        .testimonial:nth-child(2) { animation-delay: 0.2s; }
+        .testimonial:nth-child(3) { animation-delay: 0.3s; }
+        
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+            font-size: 4rem;
+            color: var(--cta-primary);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        
+        .testimonial-quote {
+            color: var(--text-primary);
+            font-size: 1.0625rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+        
+        .testimonial-role {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+        }
+        
+        /* Pricing Section */
+        .pricing-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+        }
+        
+        .pricing-box {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            color: var(--text-primary);
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            animation: scaleIn 0.6s ease-out;
+        }
+        
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .price {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--cta-primary);
+            margin: 1rem 0;
+            letter-spacing: -2px;
+        }
+        
+        .price-period {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+        
+        .features-recap {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        
+        .features-recap li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.0625rem;
+            border-bottom: 1px solid var(--divider);
+        }
+        
+        .features-recap li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--cta-primary);
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+        
+        .urgency-text {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: var(--accent-light);
+            border-radius: 8px;
+            color: var(--cta-primary);
+            font-weight: 600;
+            font-size: 0.9375rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: #888;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--cta-primary);
+        }
+        
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal-overlay.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .modal {
+            background: white;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        @keyframes modalSlideIn {
+            from { opacity: 0; transform: translateY(-20px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        
+        .modal-header {
+            background: linear-gradient(135deg, var(--cta-primary) 0%, var(--cta-hover) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+        
+        .modal-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+        
+        .modal-description {
+            opacity: 0.95;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        .modal-body {
+            padding: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-size: 0.9375rem;
+        }
+        
+        .form-label span {
+            color: var(--cta-primary);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 2px solid var(--divider);
+            border-radius: 8px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--cta-primary);
+            box-shadow: 0 0 0 4px rgba(236, 66, 6, 0.1);
+        }
+        
+        .form-error {
+            color: #dc2626;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+        
+        .form-input.error {
+            border-color: #dc2626;
+        }
+        
+        .form-input.error + .form-error {
+            display: block;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 1rem;
+            }
+            
+            .logo {
+                font-size: 1.25rem;
+            }
+            
+            .btn {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.9375rem;
+            }
+            
+            .hero {
+                padding: 3rem 1.5rem;
+            }
+            
+            .section {
+                padding: 3rem 1.5rem;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .benefits-image {
+                height: 300px;
+            }
+            
+            .pricing-box {
+                padding: 2rem 1.5rem;
+            }
+            
+            .price {
+                font-size: 2.5rem;
+            }
+            
+            .trust-badges {
+                gap: 1rem;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">WEB EXPRESS <span class="logo-emoji">⚡</span></div>
+            <button class="btn btn-primary" onclick="scrollToPricing()">Quiero mi sitio ya</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Tu sitio web profesional listo en <span class="highlight">72 horas</span> por solo <span class="highlight">$99.990 pesos.</span></h1>
+            <p>Deja de perder ventas por no tener presencia online. Creamos tu landing page de alto impacto y optimizada para vender mientras tú te enfocas en tu negocio.</p>
+            <button class="btn btn-primary btn-large" onclick="openPurchaseModal()">¡Asegurar esta oferta ahora!</button>
+            
+            <div class="trust-badges">
+                <div class="badge">Entrega en 3 días hábiles</div>
+                <div class="badge">Pago único</div>
+                <div class="badge">Sin contratos ocultos</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain Points Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-heading">¿Te suena familiar esta situación?</h2>
+            <div class="pain-cards">
+                <div class="pain-card">
+                    <span class="pain-icon">⏰</span>
+                    <h3>Esperas interminables</h3>
+                    <p>¿Cansado de programadores que demoran semanas o meses en entregar algo simple?</p>
+                </div>
+                <div class="pain-card">
+                    <span class="pain-icon">💸</span>
+                    <h3>Presupuestos gigantes</h3>
+                    <p>Te cobran millones por una página web básica que tu negocio necesita para empezar.</p>
+                </div>
+                <div class="pain-card">
+                    <span class="pain-icon">❓</span>
+                    <h3>No sabes por dónde empezar</h3>
+                    <p>La tecnología te supera y necesitas a alguien que lo haga fácil y rápido por ti.</p>
+                </div>
+            </div>
+            <div class="resolution-text">
+                Web Express es la solución: Rápida, bonita, efectiva y al precio justo.
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section section-white">
+        <div class="container">
+            <h2 class="section-heading">Todo lo que necesitas para vender online</h2>
+            <div class="benefits-grid">
+                <div class="benefits-image">
+                    <!-- Placeholder for mockup image -->
+                </div>
+                <div>
+                    <ul class="features-list">
+                        <li>Diseño 100% Mobile Friendly (Se ve perfecto en celulares).</li>
+                        <li>Optimización básica para Google (SEO inicial).</li>
+                        <li>Botón de WhatsApp flotante integrado.</li>
+                        <li>Formulario de contacto directo a tu correo.</li>
+                        <li>Entrega récord en 72 horas hábiles.</li>
+                        <li>Asesoría inicial para estructurar tu contenido.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section section-white">
+        <div class="container">
+            <h2 class="section-heading">Emprendedores chilenos que ya dieron el salto</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <p class="testimonial-quote">Gracias a Web Express, mi taller mecánico pasó de depender solo de Instagram a recibir cotizaciones formales por correo todos los días. Fue la mejor inversión.</p>
+                    <div class="testimonial-author">Juan Pérez</div>
+                    <div class="testimonial-role">Dueño de Talleres JP</div>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-quote">Necesitaba una página urgente para una feria y cumplieron en 3 días exactos. El diseño es limpio y muy profesional por el precio.</p>
+                    <div class="testimonial-author">Andrea Muñoz</div>
+                    <div class="testimonial-role">Fundadora de 'Amanecer' Cosmética Natural</div>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-quote">Simple, directo y sin vueltas. Pagué, envié mis fotos y textos, y el lunes mi sitio ya estaba funcionando.</p>
+                    <div class="testimonial-author">Carlos Saavedra</div>
+                    <div class="testimonial-role">Contador Auditor Independiente</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section pricing-section" id="pricing_section">
+        <div class="container">
+            <h2 class="section-heading" style="color: white;">Empieza a digitalizar tu negocio hoy mismo</h2>
+            <div class="pricing-box">
+                <div class="price">$99.990 CLP</div>
+                <div class="price-period">Pago Único - I.V.A incluido</div>
+                
+                <ul class="features-recap">
+                    <li>Sitio Web One-Page</li>
+                    <li>Entrega en 72h</li>
+                    <li>Integración WhatsApp y Correo</li>
+                </ul>
+                
+                <button class="btn btn-primary btn-large" onclick="openPurchaseModal()" style="width: 100%;">¡Comenzar ahora! 🚀</button>
+                
+                <div class="urgency-text">
+                    Cupos limitados por semana para garantizar tiempos de entrega.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="mailto:contacto@webexpress.cl">Contacto directo</a>
+            <a href="#terminos">Términos y Condiciones</a>
+        </div>
+        <div>© 2024 Web Express Chile. Todos los derechos reservados.</div>
+    </footer>
+
+    <!-- Purchase Modal -->
+    <div class="modal-overlay" id="purchaseModal">
+        <div class="modal">
+            <div class="modal-header">
+                <button class="modal-close" onclick="closePurchaseModal()">&times;</button>
+                <h3 class="modal-title">¡Casi listo! Datos de contacto iniciales</h3>
+                <p class="modal-description">Completa estos datos básicos antes de pagar. Luego de la compra te llamaremos para pedirte el logo, fotos y textos.</p>
+            </div>
+            <div class="modal-body">
+                <form id="purchaseForm" onsubmit="handleFormSubmit(event)">
+                    <div class="form-group">
+                        <label class="form-label" for="fullname">Nombre Completo <span>*</span></label>
+                        <input type="text" id="fullname" name="fullname" class="form-input" required>
+                        <div class="form-error">Por favor ingresa tu nombre completo</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="business_name">Nombre del Negocio/Emprendimiento <span>*</span></label>
+                        <input type="text" id="business_name" name="business_name" class="form-input" required>
+                        <div class="form-error">Por favor ingresa el nombre de tu negocio</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="whatsapp">WhatsApp de Contacto <span>*</span></label>
+                        <input type="tel" id="whatsapp" name="whatsapp" class="form-input" placeholder="+569 XXXX XXXX" required>
+                        <div class="form-error">Por favor ingresa tu número de WhatsApp</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="email">Correo Electrónico <span>*</span></label>
+                        <input type="email" id="email" name="email" class="form-input" required>
+                        <div class="form-error">Por favor ingresa un correo electrónico válido</div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-large" style="width: 100%;">Guardar datos y continuar al pago</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Scroll to pricing section
+        function scrollToPricing() {
+            document.getElementById('pricing_section').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }
+
+        // Open purchase modal
+        function openPurchaseModal() {
+            document.getElementById('purchaseModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close purchase modal
+        function closePurchaseModal() {
+            document.getElementById('purchaseModal').classList.remove('active');
+            document.body.style.overflow = '';
+            document.getElementById('purchaseForm').reset();
+            // Clear error states
+            document.querySelectorAll('.form-input').forEach(input => {
+                input.classList.remove('error');
+            });
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('purchaseModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePurchaseModal();
+            }
+        });
+
+        // Form validation
+        function validateForm(formData) {
+            let isValid = true;
+            const inputs = document.querySelectorAll('.form-input');
+            
+            inputs.forEach(input => {
+                input.classList.remove('error');
+                
+                if (!input.value.trim()) {
+                    input.classList.add('error');
+                    isValid = false;
+                }
+                
+                // Email validation
+                if (input.type === 'email' && input.value) {
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(input.value)) {
+                        input.classList.add('error');
+                        isValid = false;
+                    }
+                }
+                
+                // Phone validation (basic)
+                if (input.type === 'tel' && input.value) {
+                    const phoneRegex = /^\+?[\d\s-]+$/;
+                    if (!phoneRegex.test(input.value)) {
+                        input.classList.add('error');
+                        isValid = false;
+                    }
+                }
+            });
+            
+            return isValid;
+        }
+
+        // Handle form submission
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const formData = {
+                fullname: document.getElementById('fullname').value,
+                business_name: document.getElementById('business_name').value,
+                whatsapp: document.getElementById('whatsapp').value,
+                email: document.getElementById('email').value,
+                timestamp: new Date().toISOString()
+            };
+            
+            if (!validateForm(formData)) {
+                return;
+            }
+            
+            // STEP 1: Send data to admin (simulated - replace with actual endpoint)
+            console.log('Sending to admin:', formData);
+            
+            // In production, you would send this data to your backend:
+            // fetch('/api/purchase', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify(formData)
+            // })
+            
+            // Simulate email notification
+            const emailBody = `
+Nueva compra Web Express 72h:
+--------------------------------
+Nombre: ${formData.fullname}
+Negocio: ${formData.business_name}
+WhatsApp: ${formData.whatsapp}
+Email: ${formData.email}
+Fecha: ${formData.timestamp}
+            `;
+            
+            console.log('Email notification:', emailBody);
+            
+            // STEP 2: Redirect to payment gateway
+            // Replace this URL with your actual payment gateway (Flow, Webpay, MercadoPago)
+            const paymentGatewayURL = 'https://www.flow.cl/'; // Example - replace with actual URL
+            
+            // Add form data as URL parameters for the payment gateway
+            const params = new URLSearchParams({
+                amount: '99990',
+                email: formData.email,
+                name: formData.fullname,
+                business: formData.business_name
+            });
+            
+            // Redirect to payment
+            alert('¡Datos guardados! Serás redirigido al sistema de pago...');
+            
+            // In production, uncomment this:
+            // window.location.href = `${paymentGatewayURL}?${params.toString()}`;
+            
+            // For demo purposes, just close the modal
+            setTimeout(() => {
+                closePurchaseModal();
+            }, 2000);
+        }
+
+        // Smooth scroll animation on page load
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.5s';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
