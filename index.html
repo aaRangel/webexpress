@@ -11,14 +11,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- EmailJS -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function(){
-            emailjs.init("YOUR_PUBLIC_KEY"); // Reemplazar con tu Public Key de EmailJS
-        })();
-    </script>
-    
     <style>
         :root {
             --bg-primary: #F9F9F9;
@@ -818,7 +810,7 @@
     <!-- Header -->
     <header class="header">
         <div class="header-content">
-            <div class="logo">WEB EXPRESS <small> by Armando Rangel</small> <span class="logo-emoji">⚡</span></div>
+            <div class="logo">WEB EXPRESS <span class="logo-emoji">⚡</span></div>
             <button class="btn btn-primary" onclick="openPurchaseModal()">Quiero mi sitio ya</button>
         </div>
     </header>
@@ -1054,7 +1046,7 @@
         }
 
         // Handle form submission
-        function handleFormSubmit(event) {
+        async function handleFormSubmit(event) {
             event.preventDefault();
             
             const formData = {
@@ -1072,43 +1064,71 @@
             // Show loading state
             const submitBtn = event.target.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = 'Enviando...';
+            submitBtn.innerHTML = '⏳ Procesando...';
             submitBtn.disabled = true;
             
-            // Send email using EmailJS
-            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
-                to_email: 'arangel.py@gmail.com',
-                fullname: formData.fullname,
-                business_name: formData.business_name,
-                whatsapp: formData.whatsapp,
-                email: formData.email,
-                timestamp: formData.timestamp
-            })
-            .then(function(response) {
-                console.log('Email sent successfully!', response.status, response.text);
+            try {
+                // Send data to Formspree
+                // Replace YOUR_FORM_ID with your actual Formspree form ID
+                // Get it from: https://formspree.io/ (free, no signup needed for basic use)
+                const response = await fetch('https://formspree.io/f/xnjvkgzg', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        _subject: `🚀 Nueva compra Web Express - ${formData.fullname}`,
+                        _replyto: formData.email,
+                        _template: 'box',
+                        nombre: formData.fullname,
+                        negocio: formData.business_name,
+                        whatsapp: formData.whatsapp,
+                        email: formData.email,
+                        fecha: formData.timestamp,
+                        mensaje: `
+Nueva compra Web Express 72h:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 DATOS DEL CLIENTE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+👤 Nombre: ${formData.fullname}
+🏢 Negocio: ${formData.business_name}
+📱 WhatsApp: ${formData.whatsapp}
+📧 Email: ${formData.email}
+📅 Fecha: ${formData.timestamp}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💰 Monto: $99.990 CLP
+🔗 Link de pago: https://mpago.li/1r6T75s
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                        `
+                    })
+                });
                 
-                // Show success message
-                alert('¡Datos guardados! Serás redirigido al sistema de pago de MercadoPago...');
-                
-                // Redirect to MercadoPago payment link
-                setTimeout(() => {
-                    window.location.href = 'https://mpago.li/1r6T75s';
-                }, 1500);
-                
-            }, function(error) {
-                console.error('Email sending failed:', error);
-                
-                // Even if email fails, still redirect to payment
-                alert('Procesando... Serás redirigido al pago.');
-                setTimeout(() => {
-                    window.location.href = 'https://mpago.li/1r6T75s';
-                }, 1500);
-            })
-            .finally(function() {
-                // Reset button state
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            });
+                if (response.ok) {
+                    console.log('✅ Datos enviados correctamente');
+                } else {
+                    console.warn('⚠️ No se pudo enviar el email, pero continuaremos con el pago');
+                }
+            } catch (error) {
+                console.error('❌ Error al enviar:', error);
+                console.log('Continuando con el pago de todas formas...');
+            }
+            
+            // Reset button
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+            
+            // Close modal
+            closePurchaseModal();
+            
+            // Show success message
+            alert('¡Datos guardados! Serás redirigido al sistema de pago de MercadoPago...');
+            
+            // Redirect to MercadoPago payment link
+            setTimeout(() => {
+                window.location.href = 'https://mpago.li/1r6T75s';
+            }, 1500);
         }
 
         // Smooth scroll animation on page load
