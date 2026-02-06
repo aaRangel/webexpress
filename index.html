@@ -10,14 +10,22 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
         body { font-family: 'Inter', sans-serif; }
         
-        /* Carrusel infinito */
+        /* Carrusel infinito - Velocidad ajustada para móvil */
         @keyframes scroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
         .animate-scroll {
-            animation: scroll 30s linear infinite;
+            animation: scroll 20s linear infinite;
         }
+        
+        /* Velocidad más rápida en móviles */
+        @media (max-width: 768px) {
+            .animate-scroll {
+                animation: scroll 15s linear infinite;
+            }
+        }
+        
         .carousel-container:hover .animate-scroll {
             animation-play-state: paused;
         }
@@ -184,8 +192,52 @@
         </div>
     </section>
 
+    <!-- Sobre Mí / About -->
+    <section class="py-24 px-6 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Imagen -->
+                <div class="order-2 lg:order-1">
+                    <div class="relative">
+                        <div class="absolute -inset-4 bg-gradient-to-br from-orange-500 to-pink-500 rounded-3xl opacity-20 blur-2xl"></div>
+                        <img src="IMG_1403.JPG" alt="Armando Rangel" class="relative z-10 rounded-3xl shadow-2xl border-8 border-white w-full object-cover">
+                    </div>
+                </div>
+                
+                <!-- Contenido -->
+                <div class="order-1 lg:order-2">
+                    <div class="inline-block bg-orange-100 text-orange-600 px-4 py-1 rounded-full text-sm font-bold mb-6">
+                        👋 CONOCE AL CREADOR
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-black mb-8 leading-tight">SOY ARMANDO RANGEL</h2>
+                    <div class="space-y-6 text-lg text-gray-600 leading-relaxed">
+                        <p>
+                            Soy diseñador web freelance apasionado por crear experiencias digitales únicas y memorables. Me especializo en transformar ideas en sitios web modernos que no solo se ven increíbles, sino que también generan resultados reales para tu negocio.
+                        </p>
+                        <p>
+                            Con más de 5 años de experiencia, he trabajado con emprendedores, pequeñas empresas y startups ayudándoles a establecer su presencia digital. Mi enfoque combina diseño estético con estrategia de conversión, asegurando que cada proyecto no solo luzca profesional sino que también cumpla objetivos de negocio.
+                        </p>
+                        <p>
+                            También me especializo en campañas de Meta Ads, ayudando a mis clientes a llegar a su audiencia ideal y maximizar su retorno de inversión en publicidad digital.
+                        </p>
+                    </div>
+                    <div class="mt-10 flex flex-wrap gap-4">
+                        <div class="bg-orange-50 px-6 py-3 rounded-2xl border-2 border-orange-200">
+                            <p class="text-sm font-bold text-orange-600 mb-1">Experiencia</p>
+                            <p class="text-2xl font-black text-gray-900">+5 años</p>
+                        </div>
+                        <div class="bg-orange-50 px-6 py-3 rounded-2xl border-2 border-orange-200">
+                            <p class="text-sm font-bold text-orange-600 mb-1">Especialidad</p>
+                            <p class="text-2xl font-black text-gray-900">Web + Ads</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Nuestros Trabajos - Carrusel Infinito -->
-    <section class="py-24 px-6 bg-white overflow-hidden">
+    <section class="py-24 px-6 bg-gray-50 overflow-hidden">
         <div class="max-w-6xl mx-auto mb-16">
             <div class="text-center mb-20">
                 <h2 class="text-4xl font-black mb-4">Nuestros Trabajos</h2>
@@ -312,11 +364,11 @@
     </section>
 
     <!-- Testimonials -->
-    <section class="py-24 px-6 bg-gray-50">
+    <section class="py-24 px-6 bg-white">
         <div class="max-w-6xl mx-auto">
             <h2 class="text-4xl font-black text-center mb-20">Emprendedores que ya dieron el salto</h2>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="relative p-8 bg-white rounded-3xl border border-gray-200 shadow-sm">
+                <div class="relative p-8 bg-gray-50 rounded-3xl border border-gray-200 shadow-sm">
                     <i class="fas fa-quote-left text-4xl text-orange-600 opacity-20 absolute top-6 left-6"></i>
                     <p class="relative z-10 mb-8 text-lg italic text-gray-600">"Mi taller mecánico pasó de depender solo de Instagram a recibir cotizaciones formales por correo. Fue la mejor inversión."</p>
                     <div class="flex items-center gap-4">
@@ -327,7 +379,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="relative p-8 bg-white rounded-3xl border border-gray-200 shadow-sm">
+                <div class="relative p-8 bg-gray-50 rounded-3xl border border-gray-200 shadow-sm">
                     <i class="fas fa-quote-left text-4xl text-orange-600 opacity-20 absolute top-6 left-6"></i>
                     <p class="relative z-10 mb-8 text-lg italic text-gray-600">"Necesitaba una página urgente para una feria y cumplieron en 3 días exactos. El diseño es limpio y muy profesional."</p>
                     <div class="flex items-center gap-4">
@@ -338,7 +390,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="relative p-8 bg-white rounded-3xl border border-gray-200 shadow-sm">
+                <div class="relative p-8 bg-gray-50 rounded-3xl border border-gray-200 shadow-sm">
                     <i class="fas fa-quote-left text-4xl text-orange-600 opacity-20 absolute top-6 left-6"></i>
                     <p class="relative z-10 mb-8 text-lg italic text-gray-600">"Simple, directo y sin vueltas. Pagué, envié mis fotos y el lunes mi sitio ya estaba funcionando."</p>
                     <div class="flex items-center gap-4">
