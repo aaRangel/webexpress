@@ -3,135 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Express | Sitios Web de Alta Conversión en 72h</title>
+    <title>Web Express | Agencia Digital 72h</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
-        .gradient-text { background: linear-gradient(135deg, #1e293b 0%, #475569 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero-glow { background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15), transparent 70%); }
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Space Grotesk', sans-serif; background-color: #050505; color: #ffffff; overflow-x: hidden; }
+        
+        /* Efecto de Ruido de Fondo */
+        .bg-noise {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://grainy-gradients.vercel.app/noise.svg');
+            opacity: 0.05; z-index: -1; pointer-events: none;
+        }
+
+        /* Gradientes y Glows */
+        .text-gradient { background: linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .glow-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.4s ease; }
+        .glow-card:hover { background: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.2); transform: translateY(-5px); }
+        
+        /* Marquesina Infinita */
+        .marquee-container { overflow: hidden; white-space: nowrap; position: relative; }
+        .marquee-content { display: inline-block; animation: marquee 20s linear infinite; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 antialiased selection:bg-blue-100 selection:text-blue-900">
+<body class="antialiased">
+    <div class="bg-noise"></div>
 
-    <!-- Navbar -->
-    <nav class="fixed w-full z-50 glass border-b border-slate-200/50 transition-all duration-300" id="navbar">
+    <!-- Navbar Minimalista -->
+    <nav class="fixed w-full z-50 top-0 left-0 border-b border-white/10 bg-[#050505]/80 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="text-2xl font-extrabold tracking-tight text-slate-900">
-                WEBEXPRESS<span class="text-blue-600">.</span>
-            </div>
-            <div class="hidden md:flex items-center space-x-8 text-sm font-semibold text-slate-600">
-                <a href="#benefits" class="hover:text-blue-600 transition-colors">Beneficios</a>
-                <a href="#work" class="hover:text-blue-600 transition-colors">Proyectos</a>
-                <a href="#pricing" class="hover:text-blue-600 transition-colors">Planes</a>
-            </div>
-            <button onclick="document.getElementById('pricing').scrollIntoView()" class="bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 rounded-full font-bold transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
-                Cotizar Ahora
-            </button>
+            <div class="text-2xl font-bold tracking-tighter">WEBEXPRESS<span class="text-blue-500">®</span></div>
+            <a href="#contact" class="px-6 py-2 bg-white text-black font-bold rounded-full hover:bg-blue-500 hover:text-white transition-all">
+                Hablemos
+            </a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden hero-glow">
-        <div class="max-w-7xl mx-auto px-6 text-center" data-aos="fade-up">
-            <span class="inline-block py-1 px-3 rounded-full bg-blue-50 text-blue-600 text-sm font-bold mb-6 border border-blue-100">
-                🚀 Diseño Web Profesional en Chile
-            </span>
-            <h1 class="text-5xl lg:text-7xl font-extrabold tracking-tight mb-8 gradient-text leading-[1.1]">
-                Tu negocio online en <br class="hidden lg:block" />
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">menos de 72 horas</span>
+    <!-- Hero Section Brutalista -->
+    <section class="min-h-screen flex flex-col justify-center px-6 pt-20 relative overflow-hidden">
+        <!-- Círculo de fondo difuminado -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-900/20 rounded-full blur-[120px] -z-10"></div>
+
+        <div class="max-w-7xl mx-auto w-full" data-aos="fade-up">
+            <h1 class="text-6xl md:text-9xl font-bold leading-[0.9] tracking-tighter mb-8">
+                DISEÑO WEB <br>
+                <span class="text-slate-500">SIN LÍMITES.</span> <br>
+                EN 72 HORAS.
             </h1>
-            <p class="text-xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed">
-                Deja de perder clientes por no tener presencia digital. Creamos sitios web optimizados para vender, rápidos y 100% adaptables a móviles.
+            <p class="text-xl md:text-2xl text-slate-400 max-w-2xl font-light mb-12">
+                Transformamos tu presencia digital con aesthetics de alto nivel y estrategia de conversión. 
+                <span class="text-white font-medium">Chile, 2026.</span>
             </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <button onclick="document.getElementById('pricing').scrollIntoView()" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-blue-200 shadow-xl hover:-translate-y-1">
-                    Ver Planes y Precios
+            <div class="flex flex-wrap gap-4">
+                <button onclick="document.getElementById('pricing').scrollIntoView()" class="px-8 py-4 bg-blue-600 rounded-full font-bold text-lg hover:bg-blue-500 transition-all border border-blue-500/50 shadow-[0_0_30px_rgba(37,99,235,0.3)]">
+                    Ver Propuestas <i class="fas fa-arrow-right ml-2"></i>
                 </button>
-                <a href="https://wa.me/56973027813" class="bg-white hover:bg-slate-50 text-slate-900 border border-slate-200 px-8 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2">
-                    <i class="fab fa-whatsapp text-green-500 text-xl"></i> Hablar por WhatsApp
-                </a>
+                <button class="px-8 py-4 bg-transparent border border-white/20 rounded-full font-bold text-lg hover:bg-white hover:text-black transition-all">
+                    Ver Portafolio
+                </button>
             </div>
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section id="pricing" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl font-extrabold text-slate-900 mb-4">Inversión transparente</h2>
-                <p class="text-slate-600 text-lg">Sin costos ocultos. Pago único y tuyo para siempre.</p>
+    <!-- Marquesina de Servicios -->
+    <div class="py-12 border-y border-white/10 bg-black">
+        <div class="marquee-container">
+            <div class="marquee-content text-4xl font-bold text-slate-600">
+                LANDING PAGES • E-COMMERCE • SEO TÉCNICO • BRANDING DIGITAL • AUTOMATIZACION • LANDING PAGES • E-COMMERCE • SEO TÉCNICO • BRANDING DIGITAL • AUTOMATIZACION •
             </div>
+        </div>
+    </div>
+
+    <!-- Bento Grid de Beneficios -->
+    <section class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl md:text-6xl font-bold mb-16 tracking-tight">¿Por qué elegir <br> <span class="text-slate-500">nuestra agencia?</span></h2>
             
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Plan Express -->
-                <div class="p-8 rounded-3xl border border-slate-100 bg-slate-50 hover:shadow-xl transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Express One-Page</h3>
-                    <p class="text-slate-500 text-sm mb-6">Ideal para empezar y validar tu negocio.</p>
-                    <div class="text-4xl font-extrabold mb-6">$149.990 <span class="text-base font-medium text-slate-500">CLP</span></div>
-                    <ul class="space-y-4 mb-8 text-slate-600 font-medium">
-                        <li class="flex items-center gap-3"><i class="fas fa-check text-blue-500"></i> Diseño de 1 Página (Landing)</li>
-                        <li class="flex items-center gap-3"><i class="fas fa-check text-blue-500"></i> Entrega en 72 Horas</li>
-                        <li class="flex items-center gap-3"><i class="fas fa-check text-blue-500"></i> Botón de WhatsApp y Mail</li>
-                        <li class="flex items-center gap-3"><i class="fas fa-check text-blue-500"></i> Hosting por 1 año incluido</li>
-                    </ul>
-                    <button onclick="openModal('Express One-Page')" class="w-full py-4 rounded-xl bg-white border-2 border-slate-200 text-slate-900 font-bold hover:border-slate-900 transition-colors">Elegir Express</button>
+            <div class="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-6 h-auto md:h-[800px]">
+                <!-- Card Grande -->
+                <div class="md:col-span-2 md:row-span-2 glow-card rounded-3xl p-10 flex flex-col justify-between relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div>
+                        <i class="fas fa-bolt text-5xl mb-6 text-blue-500"></i>
+                        <h3 class="text-3xl font-bold mb-4">Velocidad de Ejecución</h3>
+                        <p class="text-slate-400 text-lg leading-relaxed">No esperes meses. Utilizamos un stack tecnológico optimizado que nos permite entregar sitios de clase mundial en 72 horas hábiles.</p>
+                    </div>
+                    <div class="mt-8 border-t border-white/10 pt-8">
+                        <span class="text-sm font-mono text-blue-400">TIEMPO PROMEDIO DE ENTREGA: 2.8 DÍAS</span>
+                    </div>
                 </div>
 
-                <!-- Plan Pro (Destacado) -->
-                <div class="p-8 rounded-3xl border-2 border-blue-600 bg-slate-900 text-white relative transform md:-translate-y-4 shadow-2xl" data-aos="fade-up" data-aos-delay="200">
-                    <div class="absolute top-0 right-0 bg-blue-600 text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-xl">POPULAR</div>
-                    <h3 class="text-xl font-bold mb-2">Corporativo Pro</h3>
-                    <p class="text-slate-400 text-sm mb-6">Para empresas que necesitan autoridad.</p>
-                    <div class="text-4xl font-extrabold mb-6">$299.990 <span class="text-base font-medium text-slate-400">CLP</span></div>
-                    <ul class="space-y-4 mb-8 text-slate-300 font-medium">
-                        <li class="flex items-center gap-3"><i class="fas fa-check text-blue-400"></i> Hasta 5 Páginas Internas</li>
-                        <li class="flex items-center gap-3"><i class="fas fa-check text-blue-400"></i> SEO Avanzado (Google)</li>
-                        <li class="flex items-center gap-3"><i class="fas fa-check text-blue-400"></i> Blog de Noticias</li>
-                        <li class="flex items-center gap-3"><i class="fas fa-check text-blue-400"></i> Dominio .cl o .com incluido</li>
-                    </ul>
-                    <button onclick="openModal('Corporativo Pro')" class="w-full py-4 rounded-xl bg-blue-600 text-white font-bold hover:bg-blue-500 transition-colors shadow-lg shadow-blue-900/50">Elegir Corporativo</button>
+                <!-- Card Pequeña 1 -->
+                <div class="glow-card rounded-3xl p-8 flex flex-col justify-center">
+                    <h3 class="text-2xl font-bold mb-2">100% Mobile First</h3>
+                    <p class="text-slate-400">Diseñamos pensando en el pulgar, no en el mouse.</p>
                 </div>
 
-                <!-- Plan E-commerce -->
-                <div class="p-8 rounded-3xl border border-slate-100 bg-slate-50 hover:shadow-xl transition-all duration-300" data-aos="fade-up" data-aos-delay="300">
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Tienda Online</h3>
-                    <p class="text-slate-500 text-sm mb-6">Vende tus productos 24/7.</p>
-                    <div class="text-4xl font-extrabold mb-6">$499.990 <span class="text-base font-medium text-slate-500">CLP</span></div>
-                    <ul class="space-y-4 mb-8 text-slate-600 font-medium">
-                        <li class="flex items-center gap-3"><i class="fas fa-check text-blue-500"></i> Catálogo de hasta 50 productos</li>
-                        <li class="flex items-center gap-3"><i class="fas fa-check text-blue-500"></i> Pasarela de pago (Webpay)</li>
-                        <li class="flex items-center gap-3"><i class="fas fa-check text-blue-500"></i> Carrito de compras</li>
-                        <li class="flex items-center gap-3"><i class="fas fa-check text-blue-500"></i> Panel autoadministrable</li>
-                    </ul>
-                    <button onclick="openModal('Tienda Online')" class="w-full py-4 rounded-xl bg-white border-2 border-slate-200 text-slate-900 font-bold hover:border-slate-900 transition-colors">Elegir Tienda</button>
+                <!-- Card Pequeña 2 -->
+                <div class="glow-card rounded-3xl p-8 flex flex-col justify-center">
+                    <h3 class="text-2xl font-bold mb-2">SEO Integrado</h3>
+                    <p class="text-slate-400">Para que Google te ame desde el día 1.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Modal de Contacto -->
-    <div id="contactModal" class="fixed inset-0 z-[100] hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl p-8 max-w-md w-full relative animate-[bounce_0.3s_ease-out]">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-900"><i class="fas fa-times"></i></button>
-            <h3 class="text-2xl font-bold text-slate-900 mb-2">¡Empecemos tu proyecto!</h3>
-            <p class="text-slate-600 mb-6 text-sm">Déjanos tus datos y te contactaremos en minutos.</p>
+    <!-- Pricing Section Dark -->
+    <section id="pricing" class="py-32 px-6 border-t border-white/10">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-20">
+                <h2 class="text-5xl font-bold tracking-tight">Inversión <br> <span class="text-slate-500">Inteligente</span></h2>
+                <p class="text-slate-400 text-xl max-w-md text-right">Elige el plan que escalará tu negocio al siguiente nivel.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Plan 1 -->
+                <div class="border border-white/10 rounded-3xl p-8 hover:border-blue-500/50 transition-colors group">
+                    <div class="text-sm font-mono text-blue-400 mb-4">STARTER</div>
+                    <div class="text-4xl font-bold mb-8">$149.990 <span class="text-lg text-slate-500 font-normal">CLP</span></div>
+                    <ul class="space-y-4 text-slate-300 mb-8">
+                        <li><i class="fas fa-check text-blue-500 mr-3"></i> One-Page de Alto Impacto</li>
+                        <li><i class="fas fa-check text-blue-500 mr-3"></i> Integración WhatsApp</li>
+                        <li><i class="fas fa-check text-blue-500 mr-3"></i> Hosting 1 Año</li>
+                    </ul>
+                    <button onclick="openModal('Starter')" class="w-full py-4 rounded-xl border border-white/20 hover:bg-white hover:text-black font-bold transition-all">Seleccionar</button>
+                </div>
+
+                <!-- Plan 2 (Destacado) -->
+                <div class="bg-white text-black rounded-3xl p-8 transform md:scale-105 shadow-2xl shadow-blue-900/20 relative">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-bold">RECOMENDADO</div>
+                    <div class="text-sm font-mono text-blue-600 mb-4">PRO AGENCY</div>
+                    <div class="text-4xl font-bold mb-8">$299.990 <span class="text-lg text-slate-600 font-normal">CLP</span></div>
+                    <ul class="space-y-4 text-slate-800 mb-8 font-medium">
+                        <li><i class="fas fa-check text-blue-600 mr-3"></i> Sitio Multi-página (Hasta 5)</li>
+                        <li><i class="fas fa-check text-blue-600 mr-3"></i> Blog Autoadministrable</li>
+                        <li><i class="fas fa-check text-blue-600 mr-3"></i> Dominio .CL Incluido</li>
+                        <li><i class="fas fa-check text-blue-600 mr-3"></i> SEO Avanzado</li>
+                    </ul>
+                    <button onclick="openModal('Pro Agency')" class="w-full py-4 rounded-xl bg-blue-600 text-white hover:bg-blue-700 font-bold transition-all shadow-lg">Seleccionar</button>
+                </div>
+
+                <!-- Plan 3 -->
+                <div class="border border-white/10 rounded-3xl p-8 hover:border-blue-500/50 transition-colors group">
+                    <div class="text-sm font-mono text-blue-400 mb-4">E-COMMERCE</div>
+                    <div class="text-4xl font-bold mb-8">$499.990 <span class="text-lg text-slate-500 font-normal">CLP</span></div>
+                    <ul class="space-y-4 text-slate-300 mb-8">
+                        <li><i class="fas fa-check text-blue-500 mr-3"></i> Tienda Vende 24/7</li>
+                        <li><i class="fas fa-check text-blue-500 mr-3"></i> Pasarela de Pagos (Webpay)</li>
+                        <li><i class="fas fa-check text-blue-500 mr-3"></i> Carga de 50 Productos</li>
+                    </ul>
+                    <button onclick="openModal('E-commerce')" class="w-full py-4 rounded-xl border border-white/20 hover:bg-white hover:text-black font-bold transition-all">Seleccionar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="contactModal" class="fixed inset-0 z-[100] hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-[#0f0f0f] border border-white/10 rounded-3xl p-8 max-w-md w-full relative">
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-slate-500 hover:text-white"><i class="fas fa-times text-xl"></i></button>
+            <h3 class="text-2xl font-bold mb-2">Inicia tu Proyecto</h3>
+            <p class="text-slate-400 mb-8 text-sm">Completa el formulario y te contactaremos vía WhatsApp.</p>
             
             <form id="contactForm" class="space-y-4">
                 <input type="hidden" id="planSelected" name="plan">
                 <div>
-                    <label class="text-xs font-bold text-slate-500 uppercase">Tu Nombre</label>
-                    <input type="text" id="name" required class="w-full mt-1 p-3 bg-slate-50 rounded-xl border border-slate-200 focus:border-blue-500 outline-none">
+                    <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Nombre</label>
+                    <input type="text" id="name" required class="w-full mt-1 p-4 bg-white/5 border border-white/10 rounded-xl focus:border-blue-500 outline-none transition-colors">
                 </div>
                 <div>
-                    <label class="text-xs font-bold text-slate-500 uppercase">Tu WhatsApp</label>
-                    <input type="tel" id="phone" required class="w-full mt-1 p-3 bg-slate-50 rounded-xl border border-slate-200 focus:border-blue-500 outline-none">
+                    <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">WhatsApp</label>
+                    <input type="tel" id="phone" required class="w-full mt-1 p-4 bg-white/5 border border-white/10 rounded-xl focus:border-blue-500 outline-none transition-colors">
                 </div>
-                <button type="submit" class="w-full bg-slate-900 text-white py-4 rounded-xl font-bold hover:bg-slate-800 transition-colors">
-                    Enviar por WhatsApp <i class="fab fa-whatsapp ml-2"></i>
+                <button type="submit" class="w-full bg-blue-600 text-white py-4 rounded-xl font-bold hover:bg-blue-500 transition-all mt-4">
+                    Enviar Solicitud
                 </button>
             </form>
         </div>
@@ -139,7 +187,7 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ once: true, duration: 800 });
+        AOS.init({ once: true, duration: 1000 });
         
         function openModal(planName) {
             document.getElementById('planSelected').value = planName;
