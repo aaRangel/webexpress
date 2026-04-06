@@ -1,151 +1,178 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Express | Soluciones Digitales 72h</title>
+    <title>Web Express | Diseño Web 72h</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;500;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Manrope', sans-serif; background: #050505; color: #fff; }
-        .text-display { font-size: clamp(3rem, 9vw, 7rem); line-height: 0.9; letter-spacing: -0.04em; }
-        .section-padding { padding: 8rem 1.5rem; }
-        .border-custom { border-color: rgba(255,255,255,0.08); }
+        body { font-family: 'Outfit', sans-serif; background: #020202; color: #fff; overflow-x: hidden; }
+        
+        /* Background Gradient Mesh */
+        .bg-mesh {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;
+            background: radial-gradient(circle at 15% 50%, rgba(76, 29, 149, 0.15), transparent 40%),
+                        radial-gradient(circle at 85% 30%, rgba(37, 99, 235, 0.15), transparent 40%);
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-10px);
+        }
+
+        /* Container Limit */
+        .container-custom { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        
+        /* Gradient Text */
+        .text-gradient {
+            background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
     </style>
 </head>
-<body class="antialiased selection:bg-blue-600 selection:text-white">
+<body class="antialiased">
+    <div class="bg-mesh"></div>
 
-    <!-- Nav -->
-    <nav class="fixed w-full top-0 z-50 bg-[#050505]/80 backdrop-blur-md border-b border-custom">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <span class="text-xl font-bold tracking-tighter">WEBEXPRESS.</span>
-            <a href="#contacto" class="px-6 py-2.5 bg-white text-black rounded-full font-bold text-sm hover:bg-blue-600 hover:text-white transition-all">Iniciar Proyecto</a>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 left-0 border-b border-white/5 bg-[#020202]/80 backdrop-blur-lg">
+        <div class="container-custom h-24 flex items-center justify-between">
+            <div class="text-2xl font-bold tracking-tighter">WEBEXPRESS<span class="text-blue-500">.</span></div>
+            <a href="https://wa.me/56973027813" class="px-8 py-3 bg-white text-black rounded-full font-bold text-sm hover:scale-105 transition-transform">Empezar Proyecto</a>
         </div>
     </nav>
 
-    <!-- Hero -->
-    <section class="min-h-screen flex items-center pt-20">
-        <div class="max-w-7xl mx-auto px-6">
-            <h1 class="text-display font-extrabold mb-8">
-                DIGITALIZA TU <br>
-                <span class="text-neutral-500">NEGOCIO HOY.</span>
-            </h1>
-            <div class="flex flex-col md:flex-row gap-12 items-start">
-                <p class="text-xl md:text-2xl text-neutral-400 max-w-xl font-light leading-relaxed">
-                    Diseño web de alto rendimiento en 72 horas. Ayudamos a barberías, talleres y pymes a dejar las mensualidades eternas y tener una web profesional propietaria.
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center pt-24 relative">
+        <div class="container-custom text-center">
+            <div class="gsap-hero opacity-0 translate-y-10">
+                <span class="inline-block py-1 px-4 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-bold mb-8">🚀 SITIOS WEB EN 72 HORAS</span>
+                <h1 class="text-6xl md:text-8xl font-extrabold mb-8 tracking-tight leading-[1.1]">
+                    Tu Negocio Merece <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">Una Web Profesional</span>
+                </h1>
+                <p class="text-xl text-slate-400 max-w-2xl mx-auto mb-12 font-light">
+                    Diseño de alto impacto, optimización para Google y cero mensualidades. 
+                    <span class="text-white">Propiedad 100% tuya desde el primer día.</span>
                 </p>
-                <div class="space-y-4">
-                    <a href="#proceso" class="block text-white font-bold hover:text-blue-500 transition-colors">↓ Cómo trabajamos</a>
-                    <a href="#planes" class="block text-white font-bold hover:text-blue-500 transition-colors">↓ Planes y Precios</a>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                    <a href="#planes" class="px-10 py-4 bg-blue-600 rounded-full font-bold text-lg hover:bg-blue-500 transition-all shadow-[0_0_30px_rgba(37,99,235,0.3)]">Ver Planes</a>
+                    <a href="#proceso" class="px-10 py-4 border border-white/10 rounded-full font-bold text-lg hover:bg-white hover:text-black transition-all">Cómo Funciona</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Proceso -->
-    <section id="proceso" class="section-padding border-t border-custom bg-neutral-950">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-sm font-bold text-blue-500 uppercase tracking-widest mb-12">Nuestro Proceso</h2>
-            <div class="grid md:grid-cols-3 gap-12">
-                <div>
-                    <div class="text-6xl font-bold text-neutral-800 mb-6">01</div>
-                    <h3 class="text-2xl font-bold mb-4">Diagnóstico</h3>
-                    <p class="text-neutral-400">Analizamos tu negocio y definimos la estructura ideal para convertir visitantes en clientes.</p>
+    <!-- Features Grid -->
+    <section id="proceso" class="py-32">
+        <div class="container-custom">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-card p-10 gsap-feature">
+                    <div class="w-14 h-14 bg-blue-600/20 rounded-2xl flex items-center justify-center mb-8 text-blue-400 text-2xl"><i class="fas fa-bolt"></i></div>
+                    <h3 class="text-2xl font-bold mb-4">Velocidad Récord</h3>
+                    <p class="text-slate-400 leading-relaxed">Tu sitio listo en 72 horas hábiles. Sin esperas de semanas que retrasan tu crecimiento.</p>
                 </div>
-                <div>
-                    <div class="text-6xl font-bold text-neutral-800 mb-6">02</div>
-                    <h3 class="text-2xl font-bold mb-4">Desarrollo 72h</h3>
-                    <p class="text-neutral-400">Construimos tu sitio con tecnología de punta, enfocado en velocidad y experiencia móvil.</p>
+                <div class="glass-card p-10 gsap-feature">
+                    <div class="w-14 h-14 bg-purple-600/20 rounded-2xl flex items-center justify-center mb-8 text-purple-400 text-2xl"><i class="fas fa-mobile-alt"></i></div>
+                    <h3 class="text-2xl font-bold mb-4">100% Responsive</h3>
+                    <p class="text-slate-400 leading-relaxed">Diseño fluido que se ve perfecto en celulares, tablets y computadores de alta gama.</p>
                 </div>
-                <div>
-                    <div class="text-6xl font-bold text-neutral-800 mb-6">03</div>
-                    <h3 class="text-2xl font-bold mb-4">Lanzamiento</h3>
-                    <p class="text-neutral-400">Te entregamos las llaves. Dominio, hosting y diseño son 100% tuyos. Sin letras chicas.</p>
+                <div class="glass-card p-10 gsap-feature">
+                    <div class="w-14 h-14 bg-green-600/20 rounded-2xl flex items-center justify-center mb-8 text-green-400 text-2xl"><i class="fas fa-search-dollar"></i></div>
+                    <h3 class="text-2xl font-bold mb-4">SEO Optimizado</h3>
+                    <p class="text-slate-400 leading-relaxed">Estructura limpia para que Google ame tu sitio y tus clientes te encuentren fácil.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Planes -->
-    <section id="planes" class="section-padding">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-5xl font-bold mb-20">Inversión Transparente</h2>
-            <div class="grid md:grid-cols-3 gap-6">
+    <!-- Pricing Section -->
+    <section id="planes" class="py-32 relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-blue-900/10 -z-10"></div>
+        <div class="container-custom">
+            <h2 class="text-5xl font-bold text-center mb-20">Planes a tu Medida</h2>
+            <div class="grid md:grid-cols-3 gap-8 items-center">
+                
                 <!-- Plan 1 -->
-                <div class="p-8 border border-custom rounded-2xl hover:bg-neutral-900 transition-all">
-                    <h3 class="text-xl font-bold mb-2">Landing Pro</h3>
-                    <div class="text-4xl font-bold mb-6">$180.000 <span class="text-lg text-neutral-500 font-normal">CLP</span></div>
-                    <p class="text-neutral-400 text-sm mb-8 h-10">Para negocios que necesitan presencia inmediata.</p>
-                    <ul class="space-y-4 mb-8 text-sm text-neutral-300">
-                        <li class="flex gap-3"><span class="text-blue-500">✓</span> Diseño One-Page de Alto Impacto</li>
-                        <li class="flex gap-3"><span class="text-blue-500">✓</span> Enlace directo a WhatsApp</li>
-                        <li class="flex gap-3"><span class="text-blue-500">✓</span> Optimización SEO Básica</li>
-                        <li class="flex gap-3"><span class="text-blue-500">✓</span> Hosting 1 año incluido</li>
+                <div class="glass-card p-8 gsap-plan">
+                    <h3 class="text-xl font-bold text-slate-300 mb-2">Landing Pro</h3>
+                    <div class="text-4xl font-bold mb-6">$180.000 <span class="text-lg text-slate-500 font-normal">CLP</span></div>
+                    <p class="text-slate-400 text-sm mb-8">Perfecto para validar tu negocio.</p>
+                    <ul class="space-y-4 mb-8 text-sm text-slate-300">
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-blue-500"></i> One-Page de Alto Impacto</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-blue-500"></i> Botón WhatsApp Inteligente</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-blue-500"></i> Hosting 1 Año Incluido</li>
                     </ul>
-                    <a href="https://wa.me/56973027813" class="block text-center py-3 border border-neutral-700 rounded-xl hover:bg-white hover:text-black transition-colors font-bold">Empezar</a>
+                    <a href="https://wa.me/56973027813" class="block text-center py-3 rounded-xl border border-white/10 hover:bg-white hover:text-black transition-all font-bold">Elegir Landing</a>
                 </div>
 
-                <!-- Plan 2 -->
-                <div class="p-8 bg-blue-600 rounded-2xl border border-blue-500 relative">
-                    <div class="absolute -top-4 right-8 bg-white text-blue-600 text-xs font-bold px-3 py-1 rounded-full">MÁS POPULAR</div>
-                    <h3 class="text-xl font-bold mb-2">Corporativo</h3>
-                    <div class="text-4xl font-bold mb-6">$350.000 <span class="text-lg text-blue-200 font-normal">CLP</span></div>
-                    <p class="text-blue-100 text-sm mb-8 h-10">La solución completa para tu marca.</p>
+                <!-- Plan 2 (Destacado) -->
+                <div class="bg-gradient-to-b from-blue-600 to-blue-800 p-8 rounded-3xl shadow-2xl transform md:scale-105 border border-blue-500/30 gsap-plan">
+                    <div class="absolute top-0 right-0 bg-white text-blue-600 text-xs font-bold px-4 py-1 rounded-bl-xl rounded-tr-2xl">RECOMENDADO</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Corporativo</h3>
+                    <div class="text-4xl font-bold mb-6 text-white">$350.000 <span class="text-lg text-blue-200 font-normal">CLP</span></div>
+                    <p class="text-blue-100 text-sm mb-8">La solución definitiva para tu marca.</p>
                     <ul class="space-y-4 mb-8 text-sm text-white">
-                        <li class="flex gap-3"><span class="text-white">✓</span> Hasta 5 Secciones Personalizadas</li>
-                        <li class="flex gap-3"><span class="text-white">✓</span> <strong>Dominio .CL Gratis</strong></li>
-                        <li class="flex gap-3"><span class="text-white">✓</span> Blog de Noticias / Servicios</li>
-                        <li class="flex gap-3"><span class="text-white">✓</span> Integración con Google Maps</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-white"></i> <strong>Dominio .CL Gratis</strong></li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-white"></i> Hasta 5 Secciones</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-white"></i> Blog Autoadministrable</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-white"></i> SEO Avanzado</li>
                     </ul>
-                    <a href="https://wa.me/56973027813" class="block text-center py-3 bg-white text-blue-600 rounded-xl hover:bg-blue-50 transition-colors font-bold">Empezar</a>
+                    <a href="https://wa.me/56973027813" class="block text-center py-3 rounded-xl bg-white text-blue-600 hover:bg-blue-50 transition-all font-bold shadow-lg">Elegir Corporativo</a>
                 </div>
 
                 <!-- Plan 3 -->
-                <div class="p-8 border border-custom rounded-2xl hover:bg-neutral-900 transition-all">
-                    <h3 class="text-xl font-bold mb-2">E-Commerce</h3>
-                    <div class="text-4xl font-bold mb-6">$650.000 <span class="text-lg text-neutral-500 font-normal">CLP</span></div>
-                    <p class="text-neutral-400 text-sm mb-8 h-10">Vende tus productos 24/7.</p>
-                    <ul class="space-y-4 mb-8 text-sm text-neutral-300">
-                        <li class="flex gap-3"><span class="text-blue-500">✓</span> Catálogo de Productos</li>
-                        <li class="flex gap-3"><span class="text-blue-500">✓</span> Pasarela de Pagos (Webpay)</li>
-                        <li class="flex gap-3"><span class="text-blue-500">✓</span> Carrito de Compras</li>
-                        <li class="flex gap-3"><span class="text-blue-500">✓</span> Panel Autoadministrable</li>
+                <div class="glass-card p-8 gsap-plan">
+                    <h3 class="text-xl font-bold text-slate-300 mb-2">E-Commerce</h3>
+                    <div class="text-4xl font-bold mb-6">$650.000 <span class="text-lg text-slate-500 font-normal">CLP</span></div>
+                    <p class="text-slate-400 text-sm mb-8">Vende tus productos 24/7.</p>
+                    <ul class="space-y-4 mb-8 text-sm text-slate-300">
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-blue-500"></i> Catálogo de Productos</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-blue-500"></i> Pasarela Webpay/Flow</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-blue-500"></i> Carrito de Compras</li>
                     </ul>
-                    <a href="https://wa.me/56973027813" class="block text-center py-3 border border-neutral-700 rounded-xl hover:bg-white hover:text-black transition-colors font-bold">Empezar</a>
+                    <a href="https://wa.me/56973027813" class="block text-center py-3 rounded-xl border border-white/10 hover:bg-white hover:text-black transition-all font-bold">Elegir Tienda</a>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- FAQ -->
-    <section class="section-padding border-t border-custom bg-neutral-950">
-        <div class="max-w-3xl mx-auto px-6">
-            <h2 class="text-3xl font-bold mb-12">Preguntas Frecuentes</h2>
-            <div class="space-y-8">
-                <div>
-                    <h3 class="text-xl font-bold mb-2">¿Realmente está listo en 72 horas?</h3>
-                    <p class="text-neutral-400">Sí. Una vez que nos das el contenido (fotos y textos), nuestro equipo trabaja contra el reloj para entregarte una versión funcional.</p>
-                </div>
-                <div>
-                    <h3 class="text-xl font-bold mb-2">¿Tendré que pagar algo cada mes?</h3>
-                    <p class="text-neutral-400">No. El diseño y desarrollo es un pago único. Solo deberás renovar el dominio y hosting anualmente (aprox $40.000 CLP al año).</p>
-                </div>
-                <div>
-                    <h3 class="text-xl font-bold mb-2">¿Puedo administrar el sitio yo mismo?</h3>
-                    <p class="text-neutral-400">Totalmente. Te entregamos un panel simple para que puedas cambiar textos o subir fotos sin saber de programación.</p>
-                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer id="contacto" class="py-24 px-6 border-t border-custom text-center">
-        <h2 class="text-4xl md:text-6xl font-bold mb-8">¿LISTO PARA EMPEZAR?</h2>
-        <a href="https://wa.me/56973027813" class="inline-block px-10 py-5 bg-blue-600 rounded-full font-bold text-xl hover:bg-blue-500 transition-all shadow-[0_0_40px_rgba(37,99,235,0.4)]">
-            Hablemos por WhatsApp
-        </a>
-        <p class="mt-16 text-neutral-600 text-sm">© 2026 Web Express Chile. Todos los derechos reservados.</p>
+    <footer class="py-12 border-t border-white/5 text-center text-slate-500 text-sm">
+        <p>© 2026 Web Express Chile. Diseño y Desarrollo de Alto Nivel.</p>
     </footer>
 
+    <!-- Animaciones GSAP -->
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Animation
+        gsap.to(".gsap-hero", { opacity: 1, y: 0, duration: 1, ease: "power3.out", delay: 0.2 });
+
+        // Features Stagger
+        gsap.from(".gsap-feature", {
+            scrollTrigger: { trigger: "#proceso", start: "top 80%" },
+            y: 50, opacity: 0, duration: 0.8, stagger: 0.2, ease: "power2.out"
+        });
+
+        // Plans Stagger
+        gsap.from(".gsap-plan", {
+            scrollTrigger: { trigger: "#planes", start: "top 75%" },
+            y: 60, opacity: 0, duration: 1, stagger: 0.2, ease: "elastic.out(1, 0.7)"
+        });
+    </script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
