@@ -3,154 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Express | Agencia Digital 72h</title>
+    <title>Web Express | Tu Sitio Web en 72h</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
-        body { font-family: 'Space Grotesk', sans-serif; background-color: #050505; color: #ffffff; overflow-x: hidden; }
-        
-        /* Fondo Animado */
-        .animated-bg {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
-            background: radial-gradient(circle at 15% 50%, rgba(37, 99, 235, 0.08), transparent 25%),
-                        radial-gradient(circle at 85% 30%, rgba(147, 51, 234, 0.08), transparent 25%);
-            animation: bg-pulse 10s ease-in-out infinite alternate;
-        }
-        @keyframes bg-pulse { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
-
-        /* Placeholders Estilizados */
-        .img-placeholder {
-            background: #111; position: relative; overflow: hidden; border: 1px dashed #333;
-        }
-        .img-placeholder::after {
-            content: "IMG"; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            color: #333; font-weight: bold; letter-spacing: 2px;
-        }
-        
-        /* Micro-interacciones */
-        .btn-glow { position: relative; overflow: hidden; transition: all 0.3s; }
-        .btn-glow::before {
-            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: 0.5s;
-        }
-        .btn-glow:hover::before { left: 100%; }
-        
-        .card-tilt { transition: transform 0.1s; transform-style: preserve-3d; }
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap');
+        body { font-family: 'Space Grotesk', sans-serif; background-color: #050505; color: #fff; }
+        .gradient-text { background: linear-gradient(to right, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2); }
     </style>
 </head>
-<body class="antialiased selection:bg-blue-500 selection:text-white">
-    <div class="animated-bg"></div>
+<body class="antialiased">
 
-    <!-- Navbar -->
-    <nav class="fixed w-full z-50 top-0 left-0 border-b border-white/5 bg-[#050505]/60 backdrop-blur-lg">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="text-2xl font-bold tracking-tighter hover:opacity-80 transition-opacity cursor-pointer">WEBEXPRESS<span class="text-blue-500">®</span></div>
-            <a href="#contact" class="px-6 py-2 bg-white text-black font-bold rounded-full hover:scale-105 transition-transform">
-                Hablemos
-            </a>
+    <!-- Hero -->
+    <header class="min-h-screen flex items-center justify-center text-center px-6 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-black to-black -z-10"></div>
+        <div>
+            <h1 class="text-6xl md:text-8xl font-bold mb-6 tracking-tight">Tu Web en <span class="gradient-text">72 Horas</span></h1>
+            <p class="text-xl text-slate-400 max-w-2xl mx-auto mb-10">Deja de pagar mensualidades eternas. Ten tu sitio web profesional, tuyo y para siempre, por un único pago.</p>
+            <a href="#planes" class="bg-blue-600 hover:bg-blue-500 text-white px-10 py-4 rounded-full font-bold text-lg transition-all">Ver Planes</a>
         </div>
-    </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section class="min-h-screen flex flex-col justify-center px-6 pt-20 relative">
-        <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
-            <div data-aos="fade-right">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm text-slate-400 mb-8">
-                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Disponible para proyectos
-                </div>
-                <h1 class="text-6xl md:text-8xl font-bold leading-[0.9] tracking-tighter mb-8">
-                    DISEÑO WEB <br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">SIN LÍMITES.</span>
-                </h1>
-                <p class="text-xl text-slate-400 max-w-lg mb-10 font-light">
-                    Transformamos tu presencia digital con <span class="text-white">aesthetics de alto nivel</span> y estrategia de conversión en tiempo récord.
-                </p>
-                <div class="flex flex-wrap gap-4">
-                    <button onclick="document.getElementById('pricing').scrollIntoView()" class="btn-glow px-8 py-4 bg-blue-600 rounded-full font-bold text-lg border border-blue-500/50 shadow-[0_0_40px_rgba(37,99,235,0.2)]">
-                        Ver Propuestas <i class="fas fa-arrow-right ml-2"></i>
-                    </button>
-                </div>
-            </div>
+    <!-- Pricing Section -->
+    <section id="planes" class="py-24 px-6 bg-neutral-900">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16">Planes Transparentes</h2>
             
-            <!-- Placeholder Visual Hero -->
-            <div class="relative h-[400px] lg:h-[600px] w-full img-placeholder rounded-3xl" data-aos="fade-left">
-                <div class="absolute inset-0 bg-gradient-to-t from-[#050505] to-transparent z-10"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Bento Grid con Placeholders -->
-    <section class="py-32 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 h-auto md:h-[600px]">
-                <div class="md:col-span-2 md:row-span-2 border border-white/10 rounded-3xl p-10 glow-card relative overflow-hidden group" data-aos="fade-up">
-                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-64 img-placeholder opacity-50 group-hover:scale-105 transition-transform duration-700"></div>
-                    <div class="relative z-10">
-                        <h3 class="text-3xl font-bold mb-4">Velocidad de Ejecución</h3>
-                        <p class="text-slate-400">Stack tecnológico optimizado para entregas en 72h.</p>
-                    </div>
-                </div>
-                <div class="border border-white/10 rounded-3xl p-8 glow-card" data-aos="fade-up" data-aos-delay="100">
-                    <i class="fas fa-mobile-screen text-4xl text-blue-500 mb-4"></i>
-                    <h3 class="text-xl font-bold">Mobile First</h3>
-                </div>
-                <div class="border border-white/10 rounded-3xl p-8 glow-card" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fas fa-magnifying-glass-chart text-4xl text-purple-500 mb-4"></i>
-                    <h3 class="text-xl font-bold">SEO Técnico</h3>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing -->
-    <section id="pricing" class="py-32 px-6 border-t border-white/5">
-        <div class="max-w-7xl mx-auto">
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="border border-white/10 rounded-3xl p-8 hover:bg-white/5 transition-all">
-                    <div class="text-sm font-mono text-blue-400 mb-4">STARTER</div>
-                    <div class="text-4xl font-bold mb-8">$149.990</div>
-                    <button onclick="openModal('Starter')" class="w-full py-4 rounded-xl border border-white/20 hover:bg-white hover:text-black font-bold transition-all">Seleccionar</button>
+                <!-- Plan 1 -->
+                <div class="bg-neutral-800 p-8 rounded-3xl border border-neutral-700 card-hover transition-all">
+                    <h3 class="text-2xl font-bold mb-2">Landing Express</h3>
+                    <p class="text-slate-400 text-sm mb-6">Para estar presente en Google.</p>
+                    <div class="text-4xl font-bold mb-6">$149.990 <span class="text-lg text-slate-500 font-normal">CLP</span></div>
+                    <ul class="space-y-3 mb-8 text-slate-300 text-sm">
+                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Diseño One-Page Moderno</li>
+                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Botón de WhatsApp</li>
+                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Mapa de Ubicación</li>
+                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Hosting por 1 año</li>
+                    </ul>
+                    <a href="https://wa.me/56973027813?text=Hola,%20me%20interesa%20el%20plan%20Landing" class="block text-center py-3 rounded-xl border border-neutral-600 hover:bg-white hover:text-black transition-colors">Elegir Plan</a>
                 </div>
-                <div class="bg-white text-black rounded-3xl p-8 transform md:scale-105 shadow-2xl shadow-blue-900/20">
-                    <div class="text-sm font-mono text-blue-600 mb-4">PRO AGENCY</div>
-                    <div class="text-4xl font-bold mb-8">$299.990</div>
-                    <button onclick="openModal('Pro Agency')" class="w-full py-4 rounded-xl bg-blue-600 text-white hover:bg-blue-700 font-bold transition-all">Seleccionar</button>
+
+                <!-- Plan 2 (Destacado) -->
+                <div class="bg-blue-600 p-8 rounded-3xl border border-blue-500 card-hover transition-all relative transform md:-translate-y-4">
+                    <div class="absolute top-0 right-0 bg-white text-blue-600 text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-xl">POPULAR</div>
+                    <h3 class="text-2xl font-bold mb-2">Barbería Pro</h3>
+                    <p class="text-blue-100 text-sm mb-6">La alternativa inteligente a Agendapro.</p>
+                    <div class="text-4xl font-bold mb-6">$249.990 <span class="text-lg text-blue-200 font-normal">CLP</span></div>
+                    <div class="bg-blue-700/50 p-3 rounded-lg mb-6 text-xs text-center">
+                        💰 <strong>Ahorras +$200.000</strong> al año vs otras plataformas.
+                    </div>
+                    <ul class="space-y-3 mb-8 text-white text-sm">
+                        <li><i class="fas fa-check text-white mr-2"></i> Todo lo del Plan Express</li>
+                        <li><i class="fas fa-check text-white mr-2"></i> <strong>Dominio .CL Gratis</strong></li>
+                        <li><i class="fas fa-check text-white mr-2"></i> Sistema de Agenda (Calendly/WhatsApp)</li>
+                        <li><i class="fas fa-check text-white mr-2"></i> Galería de Trabajos</li>
+                        <li><i class="fas fa-check text-white mr-2"></i> Optimización SEO Local</li>
+                    </ul>
+                    <a href="https://wa.me/56973027813?text=Hola,%20me%20interesa%20el%20plan%20Pro" class="block text-center py-3 rounded-xl bg-white text-blue-600 font-bold hover:bg-blue-50 transition-colors shadow-lg">Elegir Plan</a>
                 </div>
-                <div class="border border-white/10 rounded-3xl p-8 hover:bg-white/5 transition-all">
-                    <div class="text-sm font-mono text-blue-400 mb-4">E-COMMERCE</div>
-                    <div class="text-4xl font-bold mb-8">$499.990</div>
-                    <button onclick="openModal('E-commerce')" class="w-full py-4 rounded-xl border border-white/20 hover:bg-white hover:text-black font-bold transition-all">Seleccionar</button>
+
+                <!-- Plan 3 -->
+                <div class="bg-neutral-800 p-8 rounded-3xl border border-neutral-700 card-hover transition-all">
+                    <h3 class="text-2xl font-bold mb-2">E-Commerce</h3>
+                    <p class="text-slate-400 text-sm mb-6">Vende tus productos online.</p>
+                    <div class="text-4xl font-bold mb-6">$499.990 <span class="text-lg text-slate-500 font-normal">CLP</span></div>
+                    <ul class="space-y-3 mb-8 text-slate-300 text-sm">
+                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Catálogo de Productos</li>
+                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Pasarela de Pago (Webpay)</li>
+                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Carrito de Compras</li>
+                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Panel Autoadministrable</li>
+                    </ul>
+                    <a href="https://wa.me/56973027813?text=Hola,%20me%20interesa%20el%20plan%20Ecommerce" class="block text-center py-3 rounded-xl border border-neutral-600 hover:bg-white hover:text-black transition-colors">Elegir Plan</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Modal -->
-    <div id="contactModal" class="fixed inset-0 z-[100] hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
-        <div class="bg-[#0f0f0f] border border-white/10 rounded-3xl p-8 max-w-md w-full">
-            <h3 class="text-2xl font-bold mb-6">Inicia tu Proyecto</h3>
-            <form id="contactForm" class="space-y-4">
-                <input type="hidden" id="planSelected">
-                <input type="text" id="name" placeholder="Tu Nombre" class="w-full p-4 bg-white/5 border border-white/10 rounded-xl outline-none focus:border-blue-500">
-                <input type="tel" id="phone" placeholder="WhatsApp" class="w-full p-4 bg-white/5 border border-white/10 rounded-xl outline-none focus:border-blue-500">
-                <button type="submit" class="w-full bg-blue-600 py-4 rounded-xl font-bold hover:bg-blue-500">Enviar</button>
-            </form>
-        </div>
-    </div>
+    <!-- Footer -->
+    <footer class="py-12 text-center text-slate-500 text-sm border-t border-neutral-800">
+        <p>© 2026 Web Express Chile. Propiedad 100% tuya.</p>
+    </footer>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ once: true });
-        function openModal(p) { document.getElementById('planSelected').value = p; document.getElementById('contactModal').classList.remove('hidden'); }
-        function closeModal() { document.getElementById('contactModal').classList.add('hidden'); }
-        document.getElementById('contactForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const msg = `Hola! Soy ${document.getElementById('name').value}. Me interesa el plan *${document.getElementById('planSelected').value}*. Tel: ${document.getElementById('phone').value}`;
-            window.open(`https://wa.me/56973027813?text=${encodeURIComponent(msg)}`, '_blank');
-        });
-    </script>
 </body>
 </html>
